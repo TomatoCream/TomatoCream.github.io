@@ -3,17 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://tomatocream.github.io/categories/</loc>
+    <loc>https://tomatocream.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://tomatocream.github.io/tags/</loc>
+    <loc>https://tomatocream.github.io/tags/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://tomatocream.github.io/</loc>
+    <loc>https://tomatocream.github.io/</loc>
     <priority>0</priority>
   </url>
   
