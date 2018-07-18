@@ -11,14 +11,12 @@
     
     
     <item>
-      <title>Title</title>
+      <title></title>
       <link>https://tomatocream.github.io/posts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://tomatocream.github.io/posts/</guid>
-      <description>post 1 things about 1
-post 1.1 things about 1.1
-post 2 things about 2</description>
+      <description>post 1 TODO post 1.1 hugo org  post 1.1.1 post 2 things about 1 :PROPERTIES: :EXPORT_FILE_NAME: post1.1 :EXPORT_DATE: :END: things about 1.1 things about 2</description>
     </item>
     
     <item>
@@ -27,7 +25,9 @@ post 2 things about 2</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://tomatocream.github.io/posts/</guid>
-      <description>post 1 post 1.1 post 2 things about 1 things about 1.1 things about 2</description>
+      <description>post 1 things about 1
+post 1.1 things about 1.1
+post 2 things about 2</description>
     </item>
     
     <item>

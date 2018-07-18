@@ -3,6 +3,10 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://tomatocream.github.io/posts/</loc>
+  </url>
+  
+  <url>
     <loc>https://tomatocream.github.io/categories/</loc>
     <priority>0</priority>
   </url>
@@ -15,10 +19,6 @@
   <url>
     <loc>https://tomatocream.github.io/tags/</loc>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tomatocream.github.io/posts/</loc>
   </url>
   
   <url>
