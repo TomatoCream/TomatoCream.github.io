@@ -1,0 +1,73 @@
+#+AUTHOR: Wong Ding Feng
+#+EMAIL: DingFengWong@gmail.com
+* About Me
+ - Wong Ding Feng
+ - NUS, Year 2 CS student
+ - Interest: Machine Learning, Making things, Anime!
+ - [[http:github.com/tomatocream][github.com/tomatocream]]
+    I [[/home/df/TomatoCream.github.io/presentation.org_20180730_122505_aAVeS5.png]]
+* Internship experience
+  - Role: *R&D Engineer: AI Research & Software Development*
+  - from: <2018-05-07 Mon> - <2018-08-03 Fri>
+** General Outline
+   1. May, Setup
+   2. May, Encryption Gui, Ming Show
+   3. June - July, Gandalf, Shoaib
+* Setup
+  - Windows > Ubuntu > Debian > Proxmox > Arch Linux
+  - Emacs and Vim
+  - Config Files: [[https://github.com/TomatoCream/dotfiles]]
+* Encryption Gui
+  - Why? Some people in Japan was not able to easily interface with
+    the GnuPG(gpg) command line interface.
+    [[/home/df/TomatoCream.github.io/presentation.org_20180730_123407_hi8FBq.png]]
+** Attempt 1 GTK+
+   [[/home/df/TomatoCream.github.io/presentation.org_20180730_123611_gkAPki.png]]
+** Attempt 1 GTK+ Problems
+   - 3Days, Linux cannot compile for windows
+     - work around exists via wine
+     - troublesome
+   - Dependency, dependency on other projects are uncertain
+     - GnuPG on windows
+     - Probably have to package gnupg with my software
+** Attempt 2 React + Electron
+   - React + Electron
+   - [[/home/df/TomatoCream.github.io/presentation.org_20180730_124432_0MwSiN.png]][[/home/df/TomatoCream.github.io/presentation.org_20180730_124446_k6Ochm.png]]
+   - Chrome's V8 Engine into an exe
+** Attempt 2 React + Electron
+   - Pros
+     - Cross compile for windows on linux
+       - Crossplatform! Linux, Windows, MacOS, Android ...
+     - Instant Webapp
+     - Dependency is internal on OpenPGP.js, no external dependency
+   - Cons
+     - Node V8 Engine is large, app turns out to be 30MB
+* Gandalf
+  - Logging feature
+  - Parallel download of warfiles.
+  - Full auto install scripts
+  - Production Server, auto restart with Supervisor and Gunicorn
+  - Provide, maintainance and patchwork to developers
+  - Gandalf Express, Nodejs version
+** Logging feature
+   - Why?
+     - High demand from developers to easily access log files from developers
+   - Requirements
+     - Do it fast, need a quick hack!
+   - How?
+     - Vsftpd, an ftp server that was on Ubuntu's Apt repository
+     - Linux, mount commands to mount all log directories
+** Logging feature
+   [[/home/df/TomatoCream.github.io/presentation.org_20180730_130041_j12yhw.png]]
+** Parallel Downloads
+   - Noticed that a large part of waiting time to setup MSA was
+     download speed
+   - Solution?
+     - Aria2
+     - [[/home/df/TomatoCream.github.io/presentation.org_20180730_130539_cSEEc3.png]]
+** Parallel Downloads
+   #+BEGIN_SRC sh
+     alias aria="aria2c -k 2M -s 16 -j 16 -x 16 "
+   #+END_SRC
+   - 16 parallel connections
+   - 15 minutes to 1 minute
