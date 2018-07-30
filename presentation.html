@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<meta name="author" content="(Wong Ding Feng)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h2 class="author">Wong Ding Feng</h2><p class="date">Created: 2018-07-30 Mon 11:22</p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org16511b2">1. Package Manager</a></li>
+<li><a href="#/slide-org0327120">2. evil</a></li>
+<li><a href="#/slide-org4aa0d16">3. remove</a></li>
+<li><a href="#/slide-org6e4a41f">4. backup</a></li>
+<li><a href="#/slide-org1ce22db">5. modernizing emacs</a></li>
+<li><a href="#/slide-orge9c9a84">6. variables</a></li>
+<li><a href="#/slide-org0f9d81b">7. really basic editing needs</a></li>
+<li><a href="#/slide-org7cae028">8. yes or no</a></li>
+<li><a href="#/slide-orgfd344c3">9. emacs server</a></li>
+<li><a href="#/slide-org971aca7">10. Styling</a>
+<ul>
+<li><a href="#/slide-orge22dd9e">10.1. fonts</a></li>
+<li><a href="#/slide-org4019521">10.2. themes</a>
+<ul>
+<li><a href="#/slide-orgd98b940">10.2.1. pywal</a></li>
+<li><a href="#/slide-orgce23ad9">10.2.2. Others</a></li>
+<li><a href="#/slide-orgb58357a">10.2.3. Set default theme</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-org2e69071">11. Interface and navigation</a>
+<ul>
+<li><a href="#/slide-org686bc79">11.1. Completion engine</a>
+<ul>
+<li><a href="#/slide-org280fee0">11.1.1. Ivy</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org1066aca">11.2. grep</a></li>
+<li><a href="#/slide-orgd8b9c55">11.3. persp</a></li>
+<li><a href="#/slide-org2c1173a">11.4. treemacs</a></li>
+<li><a href="#/slide-org59033aa">11.5. ace-window</a></li>
+<li><a href="#/slide-orgbfc07ce">11.6. beacon mode, obvious cursor</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org290889a">12. Projectile</a></li>
+<li><a href="#/slide-org7e7328c">13. some bind</a></li>
+<li><a href="#/slide-org21f310e">14. Languages</a>
+<ul>
+<li><a href="#/slide-org69c058b">14.1. completion</a></li>
+<li><a href="#/slide-org3465965">14.2. elisp</a></li>
+<li><a href="#/slide-org00ef848">14.3. javascript es6</a>
+<ul>
+<li><a href="#/slide-org89cfb5e">14.3.1. js2</a></li>
+<li><a href="#/slide-org1f8b71c">14.3.2. js2-refactor</a></li>
+<li><a href="#/slide-org5aae800">14.3.3. xref-js2</a></li>
+<li><a href="#/slide-org6b080df">14.3.4. tide</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org9cd0168">14.4. python</a>
+<ul>
+<li><a href="#/slide-org66f6321">14.4.1. Sphinx doc</a></li>
+<li><a href="#/slide-orgc4c93b3">14.4.2. development</a></li>
+<li><a href="#/slide-orgf9a28fd">14.4.3. ipython</a></li>
+<li><a href="#/slide-org3b984f2">14.4.4. jedi</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-orgc3b235e">15. git version control</a>
+<ul>
+<li><a href="#/slide-orgb28a88c">15.1. magit</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org71ce6bb">16. mode line</a></li>
+<li><a href="#/slide-orgd73f567">17. Parenthesis</a></li>
+<li><a href="#/slide-orgf072b9a">18. yasnippets</a></li>
+<li><a href="#/slide-org2b061f5">19. reveal</a></li>
+</ul>
+</div>
+</div>
+</section>
+<section>
+<section id="slide-org16511b2">
+<h2 id="org16511b2"><span class="section-number-2">1</span> Package Manager</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">setq</span> use-package-always-ensure t)
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org0327120">
+<h2 id="org0327120"><span class="section-number-2">2</span> evil</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">evil</span>
+  <span style="color: #d18aff;">:bind</span>
+  <span style="color: #d18aff;">:config</span>
+  (define-key evil-normal-state-map <span style="color: #ff4ea3;">"\C-n"</span> nil)
+  (define-key evil-normal-state-map <span style="color: #ff4ea3;">"\C-p"</span> nil)
+  (define-key evil-normal-state-map <span style="color: #ff4ea3;">"\C-t"</span> nil)
+  (define-key evil-normal-state-map (kbd <span style="color: #ff4ea3;">"C-."</span>) nil)
+  (define-key evil-normal-state-map (kbd <span style="color: #ff4ea3;">"M-."</span>) nil)
+  (define-key evil-normal-state-map <span style="color: #ff4ea3;">"."</span> nil)
+  (define-key evil-normal-state-map <span style="color: #ff4ea3;">"~"</span> nil)
+  (define-key evil-normal-state-map <span style="color: #ff4ea3;">"="</span> nil)
+  (define-key evil-normal-state-map <span style="color: #ff4ea3;">"&lt;"</span> nil)
+  (define-key evil-normal-state-map <span style="color: #ff4ea3;">"&gt;"</span> nil)
+  (evil-mode 1))
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org4aa0d16">
+<h2 id="org4aa0d16"><span class="section-number-2">3</span> remove</h2>
+<p>
+menubar, toolbar and scrollbar
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(<span style="color: #a1db00;">setq</span> make-backup-files nil)
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org6e4a41f">
+<h2 id="org6e4a41f"><span class="section-number-2">4</span> backup</h2>
+<p>
+stolen from Jethro Kuan
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">setq</span> df-backup-directory <span style="color: #ff4ea3;">"~/Dropbox/df/emacs/.backup"</span>)
+(<span style="color: #a1db00;">setq</span> backup-directory-alist
+      `((<span style="color: #ff4ea3;">".*"</span> . ,df-backup-directory)))
+(<span style="color: #a1db00;">setq</span> auto-save-file-name-transforms
+      `((<span style="color: #ff4ea3;">".*"</span> ,df-backup-directory t)))
+(<span style="color: #a1db00;">setq</span> 
+   backup-by-copying t      <span style="color: #6c6c6c; font-style: italic;">; </span><span style="color: #6c6c6c; font-style: italic;">don't clobber symlinks</span>
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)       <span style="color: #6c6c6c; font-style: italic;">; </span><span style="color: #6c6c6c; font-style: italic;">use versioned backups</span>
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org1ce22db">
+<h2 id="org1ce22db"><span class="section-number-2">5</span> modernizing emacs</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">setq</span> gc-cons-threshold 50000000)
+(<span style="color: #a1db00;">setq</span> gnutls-min-prime-bits 4096)
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orge9c9a84">
+<h2 id="orge9c9a84"><span class="section-number-2">6</span> variables</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">setq</span> user-full-name <span style="color: #ff4ea3;">"Wong Ding Feng"</span>)
+(<span style="color: #a1db00;">if</span> (equal <span style="color: #ff4ea3;">"df"</span> user-login-name)
+    (<span style="color: #a1db00;">setq</span> user-mail-address <span style="color: #ff4ea3;">"dingfengwong@gmail.com"</span>)
+  (<span style="color: #a1db00;">setq</span> user-mail-address <span style="color: #ff4ea3;">"dingfengwong@gmail.com"</span>))
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org0f9d81b">
+<h2 id="org0f9d81b"><span class="section-number-2">7</span> really basic editing needs</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">setq-default</span> indent-tabs-mode nil)
+(<span style="color: #a1db00;">setq</span> tab-width 2)
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org7cae028">
+<h2 id="org7cae028"><span class="section-number-2">8</span> yes or no</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(fset 'yes-or-no-p 'y-or-n-p)
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgfd344c3">
+<h2 id="orgfd344c3"><span class="section-number-2">9</span> emacs server</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(load <span style="color: #ff4ea3;">"server"</span>)
+(<span style="color: #a1db00;">unless</span> (server-running-p) (server-start))
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org971aca7">
+<h2 id="org971aca7"><span class="section-number-2">10</span> Styling</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+</section>
+<section id="slide-orge22dd9e">
+<h3 id="orge22dd9e"><span class="section-number-3">10.1</span> fonts</h3>
+</section>
+<section id="slide-org4019521">
+<h3 id="org4019521"><span class="section-number-3">10.2</span> themes</h3>
+<div class="outline-text-3" id="text-10-2">
+</div>
+</section>
+<section id="slide-orgd98b940">
+<h4 id="orgd98b940"><span class="section-number-4">10.2.1</span> pywal</h4>
+<p>
+pywal generates colorschemes based on pictures
+it is them put into xresources, so we will display colors with xresources
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">xresources-theme</span>)
+</pre>
+</div>
+</section>
+<section id="slide-orgce23ad9">
+<h4 id="orgce23ad9"><span class="section-number-4">10.2.2</span> Others</h4>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp"><span style="color: #6c6c6c; font-style: italic;">;;</span><span style="color: #6c6c6c; font-style: italic;">(use-package zenburn</span>
+<span style="color: #6c6c6c; font-style: italic;">;;  </span><span style="color: #6c6c6c; font-style: italic;">:ensure t)</span>
+<span style="color: #6c6c6c; font-style: italic;">;;</span><span style="color: #6c6c6c; font-style: italic;">(use-package spacemacs-theme</span>
+<span style="color: #6c6c6c; font-style: italic;">;;  </span><span style="color: #6c6c6c; font-style: italic;">:ensure t)</span>
+(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">solarized-theme</span>)
+(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">moe-theme</span>)
+</pre>
+</div>
+</section>
+<section id="slide-orgb58357a">
+<h4 id="orgb58357a"><span class="section-number-4">10.2.3</span> Set default theme</h4>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(moe-dark)
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org2e69071">
+<h2 id="org2e69071"><span class="section-number-2">11</span> Interface and navigation</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">which-key</span>
+  <span style="color: #d18aff;">:ensure</span> t
+  <span style="color: #d18aff;">:config</span>
+  (which-key-mode)
+  (<span style="color: #a1db00;">setq</span> which-key-idle-delay 0.1))
+</pre>
+</div>
+</section>
+<section id="slide-org686bc79">
+<h3 id="org686bc79"><span class="section-number-3">11.1</span> Completion engine</h3>
+<div class="outline-text-3" id="text-11-1">
+</div>
+</section>
+<section id="slide-org280fee0">
+<h4 id="org280fee0"><span class="section-number-4">11.1.1</span> Ivy</h4>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">counsel</span>)
+(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">ivy</span>
+  <span style="color: #d18aff;">:bind</span> ((<span style="color: #ff4ea3;">"\C-s"</span> . swiper)
+         (<span style="color: #ff4ea3;">"C-c C-r"</span> . ivy-resume)
+         (<span style="color: #ff4ea3;">"&lt;f6&gt;"</span> . ivy-resume)
+         (<span style="color: #ff4ea3;">"M-x"</span> . counsel-M-x)
+         (<span style="color: #ff4ea3;">"C-x C-f"</span> . counsel-find-file)
+         (<span style="color: #ff4ea3;">"&lt;f1&gt; f"</span> . counsel-describe-function)
+         (<span style="color: #ff4ea3;">"&lt;f1&gt; v"</span> . counsel-describe-variable)
+         (<span style="color: #ff4ea3;">"&lt;f1&gt; l"</span> . counsel-find-library)
+         (<span style="color: #ff4ea3;">"&lt;f2&gt; i"</span> . counsel-info-lookup-symbol)
+         (<span style="color: #ff4ea3;">"&lt;f2&gt; u"</span> . counsel-unicode-char)
+         (<span style="color: #ff4ea3;">"C-c g"</span> . counsel-git)
+         (<span style="color: #ff4ea3;">"C-c j"</span> . counsel-git-grep)
+         (<span style="color: #ff4ea3;">"C-c k"</span> . counsel-ag)
+         (<span style="color: #ff4ea3;">"C-x l"</span> . counsel-locate)
+         (<span style="color: #ff4ea3;">"C-S-o"</span> . counsel-rhythmbox))
+  <span style="color: #d18aff;">:config</span>
+  (ivy-mode 1)
+  (<span style="color: #a1db00;">setq</span> ivy-re-builders-alist
+        '((t . ivy--regex-fuzzy)))
+  (<span style="color: #a1db00;">setq</span> ivy-use-virtual-buffers t)
+  (<span style="color: #a1db00;">setq</span> enable-recursive-minibuffers t)
+  (<span style="color: #a1db00;">setq</span> ivy-height-alist nil)
+  (define-key minibuffer-local-map (kbd <span style="color: #ff4ea3;">"C-r"</span>) 'counsel-minibuffer-history))
+</pre>
+</div>
+</section>
+<section id="slide-org1066aca">
+<h3 id="org1066aca"><span class="section-number-3">11.2</span> grep</h3>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">rg</span>)
+(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">ripgrep</span>)
+(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">wgrep</span>)
+</pre>
+</div>
+</section>
+<section id="slide-orgd8b9c55">
+<h3 id="orgd8b9c55"><span class="section-number-3">11.3</span> persp</h3>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">persp-mode</span>
+  <span style="color: #d18aff;">:bind-keymap</span>
+  ((<span style="color: #ff4ea3;">"C-c l"</span> . persp-mode-map)))
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">FIXME</span>
+</pre>
+</div>
+</section>
+<section id="slide-org2c1173a">
+<h3 id="org2c1173a"><span class="section-number-3">11.4</span> treemacs</h3>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp"><span style="color: #6c6c6c; font-style: italic;">;;</span><span style="color: #6c6c6c; font-style: italic;">(use-package treemacs)</span>
+<span style="color: #6c6c6c; font-style: italic;">;;</span><span style="color: #6c6c6c; font-style: italic;">(use-package treemacs-evil)</span>
+<span style="color: #6c6c6c; font-style: italic;">;;</span><span style="color: #6c6c6c; font-style: italic;">(use-package treemacs-projectile)</span>
+
+(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">treemacs</span>
+  <span style="color: #d18aff;">:defer</span> t
+  <span style="color: #d18aff;">:init</span>
+  (<span style="color: #a1db00;">with-eval-after-load</span> 'winum
+    (define-key winum-keymap (kbd <span style="color: #ff4ea3;">"M-0"</span>) #'treemacs-select-window))
+  <span style="color: #d18aff;">:config</span>
+  (<span style="color: #a1db00;">progn</span>
+    (<span style="color: #a1db00;">setq</span> treemacs-collapse-dirs              (<span style="color: #a1db00;">if</span> (executable-find <span style="color: #ff4ea3;">"python"</span>) 3 0)
+          treemacs-deferred-git-apply-delay   0.5
+          treemacs-file-event-delay           5000
+          treemacs-follow-after-init          t
+          treemacs-follow-recenter-distance   0.1
+          treemacs-goto-tag-strategy          'refetch-index
+          treemacs-indentation                2
+          treemacs-indentation-string         <span style="color: #ff4ea3;">" "</span>
+          treemacs-is-never-other-window      nil
+          treemacs-no-png-images              nil
+          treemacs-project-follow-cleanup     nil
+          treemacs-persist-file               (expand-file-name <span style="color: #ff4ea3;">".cache/treemacs-persist"</span> user-emacs-directory)
+          treemacs-recenter-after-file-follow nil
+          treemacs-recenter-after-tag-follow  nil
+          treemacs-show-hidden-files          t
+          treemacs-silent-filewatch           nil
+          treemacs-silent-refresh             nil
+          treemacs-sorting                    'alphabetic-desc
+          treemacs-space-between-root-nodes   t
+          treemacs-tag-follow-cleanup         t
+          treemacs-tag-follow-delay           1.5
+          treemacs-width                      35)
+
+    <span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">The default width and height of the icons is 22 pixels. If you are</span>
+    <span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">using a Hi-DPI display, uncomment this to double the icon size.</span>
+    <span style="color: #6c6c6c; font-style: italic;">;;</span><span style="color: #6c6c6c; font-style: italic;">(treemacs-resize-icons 44)</span>
+
+    (treemacs-follow-mode t)
+    (treemacs-filewatch-mode t)
+    (treemacs-fringe-indicator-mode t)
+    (<span style="color: #a1db00;">pcase</span> (cons (not (null (executable-find <span style="color: #ff4ea3;">"git"</span>)))
+                 (not (null (executable-find <span style="color: #ff4ea3;">"python3"</span>))))
+      (`(t . t)
+       (treemacs-git-mode 'extended))
+      (`(t . _)
+       (treemacs-git-mode 'simple))))
+  <span style="color: #d18aff;">:bind</span>
+  (<span style="color: #d18aff;">:map</span> global-map
+        (<span style="color: #ff4ea3;">"M-0"</span>       . treemacs-select-window)
+        (<span style="color: #ff4ea3;">"C-x t 1"</span>   . treemacs-delete-other-windows)
+        (<span style="color: #ff4ea3;">"C-x t t"</span>   . treemacs)
+        (<span style="color: #ff4ea3;">"C-x t B"</span>   . treemacs-bookmark)
+        (<span style="color: #ff4ea3;">"C-x t C-t"</span> . treemacs-find-file)
+        (<span style="color: #ff4ea3;">"C-x t M-t"</span> . treemacs-find-tag)))
+
+(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">treemacs-evil</span>
+  <span style="color: #d18aff;">:after</span> treemacs evil)
+
+(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">treemacs-projectile</span>
+  <span style="color: #d18aff;">:after</span> treemacs projectile)
+</pre>
+</div>
+</section>
+<section id="slide-org59033aa">
+<h3 id="org59033aa"><span class="section-number-3">11.5</span> ace-window</h3>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">ace-window</span>
+  <span style="color: #d18aff;">:bind</span>
+  ((<span style="color: #ff4ea3;">"M-o"</span> . ace-window))
+  <span style="color: #d18aff;">:config</span>)
+</pre>
+</div>
+</section>
+<section id="slide-orgbfc07ce">
+<h3 id="orgbfc07ce"><span class="section-number-3">11.6</span> beacon mode, obvious cursor</h3>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">beacon</span>
+  <span style="color: #d18aff;">:config</span>
+  (beacon-mode 1))
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org290889a">
+<h2 id="org290889a"><span class="section-number-2">12</span> Projectile</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">projectile</span>
+  <span style="color: #d18aff;">:bind-keymap</span>
+  <span style="color: #6c6c6c; font-style: italic;">;;</span><span style="color: #6c6c6c; font-style: italic;">("C-c p" . projectile-command-map)</span>
+  )
+(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">counsel-projectile</span>
+  <span style="color: #d18aff;">:config</span>
+  (counsel-projectile-mode))
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org7e7328c">
+<h2 id="org7e7328c"><span class="section-number-2">13</span> some bind</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">defun</span> <span style="color: #ffd700;">df/go-to-inbox</span> ()
+  <span style="color: #ff4b4b;">"Go to inbox"</span>
+  (<span style="color: #a1db00;">interactive</span>)
+  (find-file <span style="color: #ff4ea3;">"~/Dropbox/df/emacs/org/inbox.org"</span>))
+
+(global-set-key (kbd <span style="color: #ff4ea3;">"C-c d o"</span>) 'df/go-to-inbox)
+
+(<span style="color: #a1db00;">defun</span> <span style="color: #ffd700;">df/go-to-config</span> ()
+  <span style="color: #ff4b4b;">"Go to config"</span>
+  (<span style="color: #a1db00;">interactive</span>)
+  (find-file <span style="color: #ff4ea3;">"~/.emacs.d/config.org"</span>))
+
+(global-set-key (kbd <span style="color: #ff4ea3;">"C-c d c"</span>) 'df/go-to-config)
+
+(<span style="color: #a1db00;">defun</span> <span style="color: #ffd700;">df/reload-config</span> ()
+  <span style="color: #ff4b4b;">"org babel config"</span>
+  (<span style="color: #a1db00;">interactive</span>)
+  (org-babel-load-file (expand-file-name <span style="color: #ff4ea3;">"~/.emacs.d/config.org"</span>)))
+
+(global-set-key (kbd <span style="color: #ff4ea3;">"C-c d r"</span>) 'df/reload-config)
+
+(<span style="color: #a1db00;">defun</span> <span style="color: #ffd700;">df/switch-to-minibuffer</span> ()
+  <span style="color: #ff4b4b;">"Switch to minibuffer window."</span>
+  (<span style="color: #a1db00;">interactive</span>)
+  (<span style="color: #a1db00;">if</span> (active-minibuffer-window)
+      (select-window (active-minibuffer-window))
+    (<span style="color: #dd0000; font-weight: bold;">error</span> <span style="color: #ff4ea3;">"Minibuffer is not active"</span>)))
+
+(<span style="color: #a1db00;">defun</span> <span style="color: #ffd700;">df/close-minibuffer</span> ()
+  <span style="color: #ff4b4b;">"Close minibuffer"</span>
+  (<span style="color: #a1db00;">interactive</span>)
+  (switch-to-minibuffer)
+  (keyboard-escape-quit))
+
+(global-set-key (kbd <span style="color: #ff4ea3;">"&lt;f7&gt;"</span>) 'switch-to-minibuffer) <span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">Bind to `C-c o'</span>
+(global-set-key (kbd <span style="color: #ff4ea3;">"&lt;f8&gt;"</span>) 'close-minibuffer) <span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">Bind to `C-c o'</span>
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org21f310e">
+<h2 id="org21f310e"><span class="section-number-2">14</span> Languages</h2>
+<div class="outline-text-2" id="text-14">
+</div>
+</section>
+<section id="slide-org69c058b">
+<h3 id="org69c058b"><span class="section-number-3">14.1</span> completion</h3>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">company</span>
+  <span style="color: #d18aff;">:config</span>
+  (global-company-mode))
+</pre>
+</div>
+</section>
+<section id="slide-org3465965">
+<h3 id="org3465965"><span class="section-number-3">14.2</span> elisp</h3>
+</section>
+<section id="slide-org00ef848">
+<h3 id="org00ef848"><span class="section-number-3">14.3</span> javascript es6</h3>
+<div class="outline-text-3" id="text-14-3">
+</div>
+</section>
+<section id="slide-org89cfb5e">
+<h4 id="org89cfb5e"><span class="section-number-4">14.3.1</span> js2</h4>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">js2-mode</span>
+  <span style="color: #d18aff;">:hook</span>
+  (js2-mode . js2-imenu-extras-mode)
+  <span style="color: #d18aff;">:config</span>
+  (<span style="color: #a1db00;">setq</span> js2-strict-missing-semi-warning nil)
+  (<span style="color: #a1db00;">setq</span> js2-basic-offset 2)
+  (add-to-list 'auto-mode-alist '(<span style="color: #ff4ea3;">"\\.js\\'"</span> . js2-mode)))
+</pre>
+</div>
+</section>
+<section id="slide-org1f8b71c">
+<h4 id="org1f8b71c"><span class="section-number-4">14.3.2</span> js2-refactor</h4>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">js2-refactor</span>
+  <span style="color: #d18aff;">:hook</span>
+  (js2-mode . js2-refactor-mode)
+  <span style="color: #d18aff;">:config</span>
+  (define-key js2-mode-map (kbd <span style="color: #ff4ea3;">"C-k"</span>) #'js2r-kill)
+  (define-key js-mode-map (kbd <span style="color: #ff4ea3;">"M-."</span>) nil)
+  <span style="color: #d18aff;">:bind-keymap</span>
+  (<span style="color: #ff4ea3;">"C-c C-r"</span> . js2-mode-map))
+</pre>
+</div>
+</section>
+<section id="slide-org5aae800">
+<h4 id="org5aae800"><span class="section-number-4">14.3.3</span> xref-js2</h4>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">xref-js2</span>
+  <span style="color: #d18aff;">:config</span>
+  (add-hook 'js2-mode-hook (<span style="color: #a1db00;">lambda</span> ()
+                             (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))))
+</pre>
+</div>
+</section>
+<section id="slide-org6b080df">
+<h4 id="org6b080df"><span class="section-number-4">14.3.4</span> tide</h4>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">tide</span>
+  <span style="color: #d18aff;">:after</span> (js2-mode typescript-mode company flycheck)
+  <span style="color: #d18aff;">:hook</span> ((js2-mode . setup-tide-mode)
+         (js2-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save))
+  <span style="color: #d18aff;">:config</span>
+  (setup-tide-mode)
+  (<span style="color: #a1db00;">setq</span> company-tooltip-align-annotations t))
+
+(<span style="color: #a1db00;">defun</span> <span style="color: #ffd700;">setup-tide-mode</span> ()
+   (<span style="color: #a1db00;">interactive</span>)
+   (tide-setup)
+   (flycheck-mode +1)
+   (<span style="color: #a1db00;">setq</span> flycheck-check-syntax-automatically '(save mode-enabled))
+   (eldoc-mode +1)
+   (tide-hl-identifier-mode +1)
+   (company-mode +1))
+</pre>
+</div>
+</section>
+<section id="slide-org9cd0168">
+<h3 id="org9cd0168"><span class="section-number-3">14.4</span> python</h3>
+<div class="outline-text-3" id="text-14-4">
+</div>
+</section>
+<section id="slide-org66f6321">
+<h4 id="org66f6321"><span class="section-number-4">14.4.1</span> Sphinx doc</h4>
+<p>
+C-x M-d create docs in the function
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">sphinx-doc</span>)
+</pre>
+</div>
+</section>
+<section id="slide-orgc4c93b3">
+<h4 id="orgc4c93b3"><span class="section-number-4">14.4.2</span> development</h4>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">elpy</span>
+  <span style="color: #d18aff;">:config</span>
+  (elpy-enable))
+</pre>
+</div>
+</section>
+<section id="slide-orgf9a28fd">
+<h4 id="orgf9a28fd"><span class="section-number-4">14.4.3</span> ipython</h4>
+<pre  class="example">
+
+</pre>
+</section>
+<section id="slide-org3b984f2">
+<h4 id="org3b984f2"><span class="section-number-4">14.4.4</span> jedi</h4>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">jedi</span>)
+(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">company-jedi</span>)
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgc3b235e">
+<h2 id="orgc3b235e"><span class="section-number-2">15</span> git version control</h2>
+<div class="outline-text-2" id="text-15">
+</div>
+</section>
+<section id="slide-orgb28a88c">
+<h3 id="orgb28a88c"><span class="section-number-3">15.1</span> magit</h3>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">magit</span>
+  <span style="color: #d18aff;">:bind</span>
+  (<span style="color: #ff4ea3;">"C-c g"</span> . magit))
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org71ce6bb">
+<h2 id="org71ce6bb"><span class="section-number-2">16</span> mode line</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">smart-mode-line</span>)
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgd73f567">
+<h2 id="orgd73f567"><span class="section-number-2">17</span> Parenthesis</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">smartparens</span>
+  <span style="color: #d18aff;">:config</span>
+  (<span style="color: #a1db00;">require</span> '<span style="color: #5fafd7;">smartparens-config</span>)
+  (smartparens-global-mode 1))
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgf072b9a">
+<h2 id="orgf072b9a"><span class="section-number-2">18</span> yasnippets</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">yasnippet-snippets</span>
+  <span style="color: #d18aff;">:config</span>
+  (yas-global-mode 1))
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org2b061f5">
+<h2 id="org2b061f5"><span class="section-number-2">19</span> reveal</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">ox-reveal</span>
+  <span style="color: #d18aff;">:config</span>
+  (<span style="color: #a1db00;">use-package</span> <span style="color: #5fafd7;">htmlize</span>)
+  (<span style="color: #a1db00;">setq</span> org-reveal-root <span style="color: #ff4ea3;">"https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/"</span>))
+</pre>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/head.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
